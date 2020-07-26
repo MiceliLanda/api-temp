@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="mx">
+    <body onload="setInterval('location.reload()',1000)">
+    <div class="container">
+    <br>
+    <br>
+</div>
+
+<center>
+<div class=".caja1" style="width: 1100px;">
+<div class="col-sm-20">
+    <div class="card">
+        <div class="alert alert-danger" role="alert">
+            <img src="p1.png" class="rounded float-left"  width="50px" height="50px"><h1 style="font: bold;"> Paciente</h1>
+                </div>
+    <table class="table">
+        <thead>
+        <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo para notificaciones</th>  
+        <th scope="col">Edad</th>
+            <th scope="col">Género</th> 
+            <th scope="col"> </th>
+        </tr>      
+    
+        {{#if usuario}}
+            <ul class="list-group">
+                {{#each usuario}}
+                    <tr>
+                    <th scope="col">{{nombre}}</th>
+                    <th scope="col">{{correo}}</th>  
+                    <th scope="col">{{edad}} </th>
+                    <th scope="col">{{genero}}</th> 
+                    <th scope="col"><a href="/delete-usuario/{{@key}}" class="btn btn-danger">Regresar</a></th>
+                    </tr>
+                {{/each}}
+            </ul>
+            {{else}}
+                <p>No hay Usuarios Ingresados.</p>
+            {{/if}}
+            </thead>
+        </table>
+    </div>
+    </div>
+</div>
+</center>
+
+
+<div class=".caja1" style="padding-left: 250px; text-align: center; padding-top: 50px; height: 400px;">
+    <div class="col-sm-20">
+    <div class="card">
+        <div class="alert alert-info" role="alert">
+           
+            {{#each usuario}}
+            </ul>
+              <img src="p.png" class="rounded float-left"  width="40px" height="40px"><h3 style="font: bold; font-size: xx-large;"> Hola {{nombre}} esta es tu temperatura</h3> 
+               {{/each}}
+            </ul>
+      </div>
+    <div class="card-body">
+               {{#if newhistorial}}
+                 <h2 style="text-align: center; font-size: 80px;">{{datos}} °C</h2>   
+               {{else}}
+                <p>No hay Historial registrado.</p>
+               {{/if}}
+    </div>
+   {{!--  <div class="card-body">
+        {{#if newhistorial}}
+            <ul class="list-group">
+                {{#each newhistorial}}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{temp}}
+                     </li>   
+                    {{/each}}
+                </ul>
+            {{else}}
+                <p>No hay Historial registrado.</p>
+            {{/if}} --}}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+</html>
+
+

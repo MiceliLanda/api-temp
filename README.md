@@ -1,0 +1,1 @@
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\ricar\Documents\api\api-as1-firebase-adminsdk-pdsa6-fcc463fdc3.jsonn"
