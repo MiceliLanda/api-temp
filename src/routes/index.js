@@ -36,13 +36,30 @@ router.get('/temperatura-usuario', (req, res) =>{
         }); 
     });   
 
-    Promise.all([promise1, promise2]).then(results => {
-        if (results [0] && results[1]){
-            res.render('temperatura', {usuario : results[0], newhistorial: results [1], datos})
+    const promise3 =  new Promise ((resolve, reject) => {
+        db.ref('date').once('value', (snapshot) =>{
+            const data = snapshot.val();
+            resolve(data);
+        }).catch(error => {
+            reject(error);
+        }); 
+    });   
+
+    const promise4 =  new Promise ((resolve, reject) => {
+        db.ref('hour').once('value', (snapshot) =>{
+            const data = snapshot.val();
+            resolve(data);
+        }).catch(error => {
+            reject(error);
+        }); 
+    });   
+
+    Promise.all([promise1, promise2 , promise3 ,promise4]).then(results => {
+        if (results [0] && results[1] && results[2] && results[3]){
+            res.render('temperatura', {usuario : results[0], newhistorial: results [1], datos , date : results[2], hour : results[3]})
         } 
     });
 });
-
 
 router.post('/new-usuario', (req,res)=>{
     console.log(req.body);
@@ -79,6 +96,9 @@ router.post('/new-historial', (req,res)=>{
 
 router.get('/delete-usuario/:id', (req, res) => {
     db.ref('usuario/' + req.params.id).remove();
+    db.ref('newhistorial').remove();
+    db.ref('date').remove();
+    db.ref('hour').remove();
     res.redirect('/');
 });
 

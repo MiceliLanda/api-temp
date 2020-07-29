@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="mx">
-    <body onload="setInterval('location.reload()',1000)">
+    <body onload="setInterval('location.reload()',3000)">
     <div class="container">
     <br>
     <br>
@@ -11,15 +11,15 @@
 <div class="col-sm-20">
     <div class="card">
         <div class="alert alert-danger" role="alert">
-            <img src="p1.png" class="rounded float-left"  width="50px" height="50px"><h1 style="font: bold;"> Paciente</h1>
+            <img src="p1.png" class="rounded float-left"  width="50px" height="50px"><h1 style="font: bold; font-size: 40px;"> Paciente</h1>
                 </div>
     <table class="table">
         <thead>
         <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Correo para notificaciones</th>  
-        <th scope="col">Edad</th>
-            <th scope="col">Género</th> 
+        <th scope="col"  style="font-size: 20px;">Nombre</th>
+        <th scope="col"  style="font-size: 20px;">Correo para notificaciones</th>  
+        <th scope="col"  style="font-size: 20px;">Edad</th>
+            <th scope="col"  style="font-size: 20px;">Género</th> 
             <th scope="col"> </th>
         </tr>      
     
@@ -27,11 +27,11 @@
             <ul class="list-group">
                 {{#each usuario}}
                     <tr>
-                    <th scope="col">{{nombre}}</th>
-                    <th scope="col">{{correo}}</th>  
-                    <th scope="col">{{edad}} </th>
-                    <th scope="col">{{genero}}</th> 
-                    <th scope="col"><a href="/delete-usuario/{{@key}}" class="btn btn-danger">Regresar</a></th>
+                    <th scope="col" style="font-size: 20px;">{{nombre}}</th>
+                    <th scope="col" style="font-size: 20px;">{{correo}}</th>  
+                    <th scope="col" style="font-size: 20px;">{{edad}} </th>
+                    <th scope="col" style="font-size: 20px;">{{genero}}</th> 
+                    <th scope="col" style="font-size: 20px;"><a href="delete-usuario/{{@key}}" class="btn btn-danger">Regresar</a></th>
                     </tr>
                 {{/each}}
             </ul>
@@ -64,22 +64,59 @@
                 <p>No hay Historial registrado.</p>
                {{/if}}
     </div>
-   {{!--  <div class="card-body">
-        {{#if newhistorial}}
-            <ul class="list-group">
-                {{#each newhistorial}}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{temp}}
-                     </li>   
-                    {{/each}}
-                </ul>
-            {{else}}
-                <p>No hay Historial registrado.</p>
-            {{/if}} --}}
-            </div>
+
+   
         </div>
     </div>
 </div>
+
+<div class="container" style="padding-left: 20%;" >
+    <div class="alert alert-info" role="alert" style="width: 648px; padding-left: 30%; background: linear-gradient(to top left, #ff6699 0%, #00ffff 100%);">
+        <h1>Historial</h1>  
+    </div>   
+  <div class="row" style="text-align: center;" >
+    <div class="col-sm-3" style="background-color:#93d0f8; padding-right: 30px; text-align: center; background: linear-gradient(to top left, #ff6699 0%, #00ffff 100%);" >
+     {{#if newhistorial}} 
+                {{#each newhistorial}} 
+                    <div style="text-align: center; font-size: 25px;" >
+                        {{temp}}
+                    </div>
+                {{/each}}
+        {{else}}
+                <p>No hay Historial registrado.</p>
+        {{/if}}
+    </div>
+    <div class="col-sm-3" style="background-color:#3b94cf; text-align: center; background: linear-gradient(to top left, #ff6699 0%, #00ffff 100%);">
+       {{#if date}}
+                 {{#each date}}
+                 <div style="text-align: center; font-size: 25px;" >
+                    {{fecha}} 
+                 </div>
+                 {{/each}}
+            {{else}}
+                 <p>nada</p>
+       {{/if}}.    
+    </div>
+     <div class="col-sm-3" style="background-color:#1673b1; padding-right: 30px; text-align: center; background: linear-gradient(to top left, #ff6699 0%, #00ffff 100%);" >
+     {{#if hour}} 
+                {{#each hour}} 
+                    <div style="text-align: center; font-size: 25px;" >
+                        {{hora}}
+                    </div>
+                {{/each}}
+        {{else}}
+                <p>No hay Horarios Registrados</p>
+        {{/if}}
+    </div>
+  </div>
+</div>
+
+
+        
+        
+    </div>
+        </div>
+
 
 </body>
 
